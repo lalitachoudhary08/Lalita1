@@ -1,0 +1,102 @@
+this repo used to create resources in aws with tf
+
+security group
+ec2
+key pair
+
+terraform init
+terraform plan ----terraform validate ----terraform fmt
+terraform apply
+
+why are we using terraform / what is terraform ?
+
+IaC
+create resources i.e. business team needed apache or wanted some dependency resource and we have created it.
+
+you can reuse 
+tf - diff providers
+declaritive hashicarp 
+avoid complete consol update / creation
+reduce time
+agile process - do immideatly 
+resource creation very fast by terraform
+
+which block i can use to create resources ?
+resource "aws_instance" apache {
+     instance type = 
+     ami =
+     datasource =
+     securitygroup = 
+     keypair =
+     subnets =     
+
+}
+
+terraform lifecycle ?
+init / plan / apply
+
+what init does ?
+terraform will scan your code and it will find the plugins & it downloads plugins / and also terraform block also find the plugins
+
+terraform {
+    required version = "~>1.6.0"
+   required_provider = {
+    aws
+   }
+
+}
+
+i want to create security group?
+
+resource "aws-security-group" sg {
+name = "apache"
+
+ingress ={
+    port = 80
+    source = [0.0.0.0/0]
+
+egrees = {
+port = -1
+source = [0.0.0.0/0]
+ 
+}
+}
+
+}
+
+in terraform every 
+
+ec2 proprity 
+public ip / private ip /subnets / vpc /zone /instance-id -----attributes 
+interpolation - calling from one resource to another resource // calling from one resouce to another data source 
+
+to print ---- output block 
+output "publicip"{
+      description="print ip"
+      value = aws_instance.apache.public_ip
+
+}
+
+*.tf 
+----------
+resource{}
+data{}
+output{}
+provide{}
+version{}
+terraform{}
+
+
+data{}
+
+
+
+
+
+
+
+
+
+
+
+terraform.exe plan -var instance_type=t2.micro
